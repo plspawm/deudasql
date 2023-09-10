@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "294273894817",
+    "project_id": "deudasql",
+    "storage_bucket": "deudasql.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294273894817:android:2d8891a4fa3b8121fc23e0",
+        "android_client_info": {
+          "package_name": "com.servicios4j.deduasql"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "294273894817-4g0i2p8actj427i96mt69mbfnijoi80s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmdeQbyG2V88ecvlIevFxz561iu8TlWX0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "294273894817-4g0i2p8actj427i96mt69mbfnijoi80s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "294273894817-burkl456b830cjoscvkt6l7nv9uqp6s7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.servicios4j.deduasql"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
