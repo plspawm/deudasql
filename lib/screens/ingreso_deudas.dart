@@ -179,6 +179,7 @@ class _IngresoDeudasState extends State<IngresoDeudas> {
                           "nombre_deuda": nombre_deuda.text,
                           "n_cuota": int.parse(n_cuota.text),
                           "fecha_pago": selectedDate.toLocal(),
+                          "fecha_proximo_pago": selectedDate.add(const Duration(days: 30)).toLocal(),
                           "uid": user_id
                         });
                         setState(() {

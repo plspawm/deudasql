@@ -76,8 +76,11 @@ class _MyLoginState extends State<MyLogin> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Bienvenido",
-                  style: Theme.of(context).textTheme.displayLarge),
+              FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text('Bienvenido', style: Theme.of(context).textTheme.displayLarge,)),
+              /* Text("Bienvenido",
+                  style: Theme.of(context).textTheme.displayLarge), */
               TextFormField(
                 controller: _user,
                 decoration: const InputDecoration(

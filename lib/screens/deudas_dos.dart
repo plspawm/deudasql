@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
 
 class MyDeudas2 extends StatefulWidget {
   const MyDeudas2({super.key});
@@ -18,6 +19,7 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late AnimationController _controller;
   late String user_id;
+  final f = new DateFormat('dd-MM-yyyy hh:mm');
 
   @override
   void initState() {
@@ -87,7 +89,7 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
             height: 250,
             width: MediaQuery.of(context).size.width,
             color: Theme.of(context).colorScheme.inversePrimary, //Colors.red,
-            child: Center(
+            child: const Center(
                 child: Text(
               "DEUDAS QL",
               style: TextStyle(fontSize: 20, color: Colors.white),
@@ -106,7 +108,7 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
                   decoration:
                       BoxDecoration(color: Color.fromRGBO(236, 236, 236, 142)),
                   child: IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.add,
                       color: Color.fromARGB(255, 74, 8, 216),
                     ),
@@ -114,7 +116,7 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
                       // do something
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
-                          builder: (context) => IngresoDeudas(),
+                          builder: (context) => const IngresoDeudas(),
                         ),
                       );
                     },
@@ -131,10 +133,10 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
                   //return Text(snapshot.data?[index]['nombre_deuda']);
                   return Card(
                       elevation: 8.0,
-                      margin: new EdgeInsets.symmetric(
+                      margin: const EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 6.0),
                       child: Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Color.fromRGBO(236, 236, 236, 142)),
                           child: Slidable(
                             // Specify a key if the Slidable is dismissible.
@@ -176,7 +178,7 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
 
                             // The end action pane is the one at the right or the bottom side.
                             endActionPane: ActionPane(
-                              motion: ScrollMotion(),
+                              motion: const ScrollMotion(),
                               children: [
                                 SlidableAction(
                                   // An action can be bigger than the others.
@@ -229,7 +231,10 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
                                       "Cuotas Restantes: " +
                                           snapshot.data![index].n_cuota
                                               .toString(),
-                                      style: TextStyle(color: Colors.black54))
+                                      style: TextStyle(color: Colors.black54)),
+                                      Icon(Icons.linear_scale,
+                                      color: Colors.black54),
+                                      Text("Proximo pago: "+"${f.format(snapshot.data![index].fecha_pago.toDate().toLocal())}".split(' ')[0],style: TextStyle(color: Colors.black54))
                                 ],
                               ),
                             ),
@@ -273,7 +278,6 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
               showModal(context);
               final User? user = await _auth.currentUser;
               if (user == null) {
-//6
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   content: Text('No one has signed in.'),
                 ));

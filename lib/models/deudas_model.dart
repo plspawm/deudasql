@@ -5,18 +5,21 @@ class DeudaModel {
   final String nombre_deuda;
   final int n_cuota;
   final Timestamp fecha_pago;
+  final Timestamp fecha_proxima_pago;
 
   const DeudaModel(
       {this.id,
       required this.n_cuota,
       required this.nombre_deuda,
-      required this.fecha_pago});
+      required this.fecha_pago,
+      required this.fecha_proxima_pago});
 
   toJson() {
     return {
       "nombre_deuda": nombre_deuda,
       "n_cuota": n_cuota,
-      "fecha_pago": fecha_pago
+      "fecha_pago": fecha_pago,
+      "fecha_proximo_pago": fecha_proxima_pago,
     };
   }
 
@@ -27,6 +30,7 @@ class DeudaModel {
         id: document.id,
         n_cuota: data["n_cuota"],
         nombre_deuda: data["nombre_deuda"],
-        fecha_pago: data["fecha_pago"]);
+        fecha_pago: data["fecha_pago"],
+        fecha_proxima_pago: data["fecha_proximo_pago"]);
   }
 }
