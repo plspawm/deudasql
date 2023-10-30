@@ -31,9 +31,9 @@ Future<List<DeudaModel>> getDeudasAll() async {
   }
 }
 
-Future<List<DeudaModel>> getDeudasUser(String id_user) async {
+Future<List<DeudaModel>> getDeudasUser(String idUser) async {
   try {
-    final snapshot = await db.collection("deudas").where("uid",isEqualTo: id_user).get();
+    final snapshot = await db.collection("deudas").where("uid",isEqualTo: idUser).get();
     final deudaData = snapshot.docs.map((e) => DeudaModel.fromSnapshot(e)).toList();
     return deudaData;
   }catch(error) {

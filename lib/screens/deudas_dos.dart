@@ -19,7 +19,7 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late AnimationController _controller;
   late String userId;
-  final f = new DateFormat('dd-MM-yyyy hh:mm');
+  final f = DateFormat('dd-MM-yyyy hh:mm');
 
   @override
   void initState() {
@@ -31,7 +31,7 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
     } else {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => MyLogin(),
+          builder: (context) => const MyLogin(),
         ),
       );
     }
@@ -212,9 +212,9 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
                                   horizontal: 20.0, vertical: 10.0),
                               leading: Container(
                                 padding: const EdgeInsets.only(right: 12.0),
-                                decoration: new BoxDecoration(
-                                    border: new Border(
-                                        right: new BorderSide(
+                                decoration: const BoxDecoration(
+                                    border: Border(
+                                        right: BorderSide(
                                             width: 1.0,
                                             color: Colors.white24))),
                                 child: const Icon(Icons.monetization_on,
@@ -274,7 +274,7 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
               }
             case 1:
               showModal(context);
-              final User? user = await _auth.currentUser;
+              final User? user = _auth.currentUser;
               if (user == null) {
                 // ignore: use_build_context_synchronously
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
