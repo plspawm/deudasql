@@ -8,7 +8,7 @@ workflows:
       app_store_connect: MJB3S4RR5G
     environment:
       ios_signing:
-        distribution_type: app_store | ad_hoc | development | enterprise # app_store or: ad_hoc | development | enterprise
+        distribution_type: ad_hoc # | ad_hoc | development | enterprise # app_store or: ad_hoc | development | enterprise
         bundle_identifier: com.friends.game
       vars:
         BUNDLE_ID: com.friends.game
