@@ -10,10 +10,10 @@ Future<List> getDeudas() async {
     CollectionReference deudaRef = db.collection("deudas");
     QuerySnapshot queryDeudas = await deudaRef.get();
 
-    queryDeudas.docs.forEach((element) {
+    for (var element in queryDeudas.docs) {
       //final dataFinal = {...mapId, ...element.data()};
       deudas.add(element.data());
-    });
+    }
 
     return deudas;
   } catch (error) {
@@ -41,20 +41,20 @@ Future<List<DeudaModel>> getDeudasUser(String id_user) async {
   }
 }
 
-void pagar(id_deuda, n_cuota) {
+void pagar(idDeuda, nCuota) {
   try {
-    final deudaRef = db.collection("deudas").doc(id_deuda);
+    final deudaRef = db.collection("deudas").doc(idDeuda);
     deudaRef.update({
-      "n_cuota": n_cuota - 1,
+      "n_cuota": nCuota - 1,
     });
   } catch(error) {
     throw Exception(error);
   }
 }
 
-void eliminar(id_deuda) {
+void eliminar(idDeuda) {
   try {
-    final deudaRef = db.collection("deudas").doc(id_deuda);
+    final deudaRef = db.collection("deudas").doc(idDeuda);
     deudaRef.delete();
   } catch(error) {
     throw Exception(error);

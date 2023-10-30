@@ -18,7 +18,7 @@ class MyDeudas2 extends StatefulWidget {
 class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late AnimationController _controller;
-  late String user_id;
+  late String userId;
   final f = new DateFormat('dd-MM-yyyy hh:mm');
 
   @override
@@ -27,7 +27,7 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
     _controller = AnimationController(vsync: this);
     final User? user = _auth.currentUser;
     if (user != null) {
-      user_id = user.uid;
+      userId = user.uid;
     } else {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
@@ -124,7 +124,7 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
         ],
       ),
       body: FutureBuilder(
-        future: getDeudasUser(user_id),
+        future: getDeudasUser(userId),
         builder: ((context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
@@ -185,7 +185,7 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
                                   flex: 2,
                                   onPressed: (context) {
                                     pagar(snapshot.data![index].id,
-                                        snapshot.data![index].n_cuota);
+                                        snapshot.data![index].nCuota);
                                     setState(() {
                                       getDeudasAll();
                                     });
@@ -221,20 +221,18 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
                                     color: Color.fromARGB(255, 39, 33, 33)),
                               ),
                               title: Text(
-                                  snapshot.data![index].nombre_deuda.toString(),
+                                  snapshot.data![index].nombreDeuda.toString(),
                                   style: const TextStyle(color: Colors.black)),
                               subtitle: Row(
                                 children: <Widget>[
                                   const Icon(Icons.linear_scale,
                                       color: Colors.black54),
                                   Text(
-                                      "Cuotas Restantes: " +
-                                          snapshot.data![index].n_cuota
-                                              .toString(),
+                                      "Cuotas Restantes: ${snapshot.data![index].nCuota}",
                                       style: const TextStyle(color: Colors.black54)),
                                       const Icon(Icons.linear_scale,
                                       color: Colors.black54),
-                                      Text("Proximo pago: ${f.format(snapshot.data![index].fecha_pago.toDate().toLocal()).split(' ')[0]}",style: const TextStyle(color: Colors.black54))
+                                      Text("Proximo pago: ${f.format(snapshot.data![index].fechaPago.toDate().toLocal()).split(' ')[0]}",style: const TextStyle(color: Colors.black54))
                                 ],
                               ),
                             ),

@@ -1,7 +1,9 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Customshape extends CustomClipper<Path>{
+class Customshape extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     /* double height = size.height;
@@ -19,7 +21,8 @@ class Customshape extends CustomClipper<Path>{
 
     final controlPoint = Offset(size.width * 0.4, size.height);
     final endPoint = Offset(size.width, size.height / 2);
-    path.quadraticBezierTo(controlPoint.dx, controlPoint.dy, endPoint.dx, endPoint.dy);
+    path.quadraticBezierTo(
+        controlPoint.dx, controlPoint.dy, endPoint.dx, endPoint.dy);
 
     path.lineTo(size.width, 0.0);
     path.close();
@@ -28,8 +31,6 @@ class Customshape extends CustomClipper<Path>{
 
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    // TODO: implement shouldReclip
     return true;
   }
-
 }

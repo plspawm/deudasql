@@ -17,11 +17,11 @@ class IngresoDeudas extends StatefulWidget {
 class _IngresoDeudasState extends State<IngresoDeudas> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   DateTime selectedDate = DateTime.now();
-  final nombre_deuda = TextEditingController();
-  final n_cuota = TextEditingController();
+  final nombreDeuda = TextEditingController();
+  final nCuota = TextEditingController();
   bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
-  late String user_id;
+  late String userId;
 
   //DatabaseReference ref = FirebaseDatabase.instance.ref("deudas");
   CollectionReference deudasRef =
@@ -32,7 +32,7 @@ class _IngresoDeudasState extends State<IngresoDeudas> {
     super.initState();
     final User? user = _auth.currentUser;
     if(user != null) {
-      user_id = user.uid;
+      userId = user.uid;
     } else {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
@@ -135,7 +135,7 @@ class _IngresoDeudasState extends State<IngresoDeudas> {
                   }
                   return null;
                 },
-                controller: nombre_deuda,
+                controller: nombreDeuda,
                 decoration: const InputDecoration(
                   hintText: 'Nombre de Deuda',
                 ),
@@ -148,7 +148,7 @@ class _IngresoDeudasState extends State<IngresoDeudas> {
                   }
                   return null;
                 },
-                controller: n_cuota,
+                controller: nCuota,
                 decoration: const InputDecoration(
                   hintText: 'N° Cuotas',
                 ),
@@ -175,11 +175,11 @@ class _IngresoDeudasState extends State<IngresoDeudas> {
                           _isLoading = true;
                         });
                         await deudasRef.add({
-                          "nombre_deuda": nombre_deuda.text,
-                          "n_cuota": int.parse(n_cuota.text),
+                          "nombre_deuda": nombreDeuda.text,
+                          "n_cuota": int.parse(nCuota.text),
                           "fecha_pago": selectedDate.toLocal(),
                           "fecha_proximo_pago": selectedDate.add(const Duration(days: 30)).toLocal(),
-                          "uid": user_id
+                          "uid": userId
                         });
                         setState(() {
                           _isLoading = false;

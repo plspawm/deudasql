@@ -80,7 +80,7 @@ class MyDeudas extends StatelessWidget {
                             // An action can be bigger than the others.
                             flex: 2,
                             onPressed: (context) {
-                              pagar(snapshot.data![index].id, snapshot.data![index].n_cuota);
+                              pagar(snapshot.data![index].id, snapshot.data![index].nCuota);
                             },
                             backgroundColor: const Color(0xFF7BC043),
                             foregroundColor: Colors.white,
@@ -99,7 +99,7 @@ class MyDeudas extends StatelessWidget {
 
                       // The child of the Slidable is what the user sees when the
                       // component is not dragged.
-                      child: ListTile(title: Text("${snapshot.data![index].nombre_deuda} / ${snapshot.data![index].n_cuota}")),
+                      child: ListTile(title: Text("${snapshot.data![index].nombreDeuda} / ${snapshot.data![index].nCuota}")),
                     );
                   }
                   );

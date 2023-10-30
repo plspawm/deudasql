@@ -2,24 +2,24 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DeudaModel {
   final String? id;
-  final String nombre_deuda;
-  final int n_cuota;
-  final Timestamp fecha_pago;
-  final Timestamp fecha_proxima_pago;
+  final String nombreDeuda;
+  final int nCuota;
+  final Timestamp fechaPago;
+  final Timestamp fechaProximaPago;
 
   const DeudaModel(
       {this.id,
-      required this.n_cuota,
-      required this.nombre_deuda,
-      required this.fecha_pago,
-      required this.fecha_proxima_pago});
+      required this.nCuota,
+      required this.nombreDeuda,
+      required this.fechaPago,
+      required this.fechaProximaPago});
 
   toJson() {
     return {
-      "nombre_deuda": nombre_deuda,
-      "n_cuota": n_cuota,
-      "fecha_pago": fecha_pago,
-      "fecha_proximo_pago": fecha_proxima_pago,
+      "nombre_deuda": nombreDeuda,
+      "n_cuota": nCuota,
+      "fecha_pago": fechaPago,
+      "fecha_proximo_pago": fechaProximaPago,
     };
   }
 
@@ -28,9 +28,9 @@ class DeudaModel {
     final data = document.data()!;
     return DeudaModel(
         id: document.id,
-        n_cuota: data["n_cuota"],
-        nombre_deuda: data["nombre_deuda"],
-        fecha_pago: data["fecha_pago"],
-        fecha_proxima_pago: data["fecha_proximo_pago"]);
+        nCuota: data["n_cuota"],
+        nombreDeuda: data["nombre_deuda"],
+        fechaPago: data["fecha_pago"],
+        fechaProximaPago: data["fecha_proximo_pago"]);
   }
 }
