@@ -106,7 +106,7 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
               elevation: 8.0,
               child: Container(
                   decoration:
-                      BoxDecoration(color: Color.fromRGBO(236, 236, 236, 142)),
+                      const BoxDecoration(color: Color.fromRGBO(236, 236, 236, 142)),
                   child: IconButton(
                     icon: const Icon(
                       Icons.add,
@@ -161,7 +161,7 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
                                     });
                                     toast("Deuda Eliminada");
                                   },
-                                  backgroundColor: Color(0xFFFE4A49),
+                                  backgroundColor: const Color(0xFFFE4A49),
                                   foregroundColor: Colors.white,
                                   icon: Icons.delete,
                                   label: 'Eliminar',
@@ -190,7 +190,7 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
                                       getDeudasAll();
                                     });
                                   },
-                                  backgroundColor: Color(0xFF7BC043),
+                                  backgroundColor: const Color(0xFF7BC043),
                                   foregroundColor: Colors.white,
                                   icon: Icons.archive,
                                   label: 'Pagar',
@@ -208,33 +208,33 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
                             // The child of the Slidable is what the user sees when the
                             // component is not dragged.
                             child: ListTile(
-                              contentPadding: EdgeInsets.symmetric(
+                              contentPadding: const EdgeInsets.symmetric(
                                   horizontal: 20.0, vertical: 10.0),
                               leading: Container(
-                                padding: EdgeInsets.only(right: 12.0),
+                                padding: const EdgeInsets.only(right: 12.0),
                                 decoration: new BoxDecoration(
                                     border: new Border(
                                         right: new BorderSide(
                                             width: 1.0,
                                             color: Colors.white24))),
-                                child: Icon(Icons.monetization_on,
+                                child: const Icon(Icons.monetization_on,
                                     color: Color.fromARGB(255, 39, 33, 33)),
                               ),
                               title: Text(
                                   snapshot.data![index].nombre_deuda.toString(),
-                                  style: TextStyle(color: Colors.black)),
+                                  style: const TextStyle(color: Colors.black)),
                               subtitle: Row(
                                 children: <Widget>[
-                                  Icon(Icons.linear_scale,
+                                  const Icon(Icons.linear_scale,
                                       color: Colors.black54),
                                   Text(
                                       "Cuotas Restantes: " +
                                           snapshot.data![index].n_cuota
                                               .toString(),
-                                      style: TextStyle(color: Colors.black54)),
-                                      Icon(Icons.linear_scale,
+                                      style: const TextStyle(color: Colors.black54)),
+                                      const Icon(Icons.linear_scale,
                                       color: Colors.black54),
-                                      Text("Proximo pago: "+"${f.format(snapshot.data![index].fecha_pago.toDate().toLocal())}".split(' ')[0],style: TextStyle(color: Colors.black54))
+                                      Text("Proximo pago: ${f.format(snapshot.data![index].fecha_pago.toDate().toLocal()).split(' ')[0]}",style: const TextStyle(color: Colors.black54))
                                 ],
                               ),
                             ),
@@ -260,7 +260,7 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromARGB(255, 74, 8, 216),
+        selectedItemColor: const Color.fromARGB(255, 74, 8, 216),
         onTap: (int index) async {
           switch (index) {
             case 0:
@@ -278,6 +278,7 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
               showModal(context);
               final User? user = await _auth.currentUser;
               if (user == null) {
+                // ignore: use_build_context_synchronously
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   content: Text('No one has signed in.'),
                 ));
@@ -285,12 +286,14 @@ class _MyDeudas2 extends State<MyDeudas2> with SingleTickerProviderStateMixin {
               }
               await _auth.signOut();
               final String uid = user.uid;
+              // ignore: use_build_context_synchronously
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text(uid + 'Haz Cerrado Sesión Exitosamente.'),
+                content: Text('$uid Haz Cerrado Sesión Exitosamente.'),
               ));
+              // ignore: use_build_context_synchronously
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
-                  builder: (context) => MyLogin(),
+                  builder: (context) => const MyLogin(),
                 ),
               );
           }

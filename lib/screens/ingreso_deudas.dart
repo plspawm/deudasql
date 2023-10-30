@@ -36,7 +36,7 @@ class _IngresoDeudasState extends State<IngresoDeudas> {
     } else {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => MyLogin(),
+          builder: (context) => const MyLogin(),
         ),
       );
     }
@@ -93,7 +93,7 @@ class _IngresoDeudasState extends State<IngresoDeudas> {
             height: 250,
             width: MediaQuery.of(context).size.width,
             color: Theme.of(context).colorScheme.inversePrimary,//Colors.red,
-            child: Center(child: Text("DEUDAS QL",style: TextStyle(fontSize: 20,color: Colors.white),)),
+            child: const Center(child: Text("DEUDAS QL",style: TextStyle(fontSize: 20,color: Colors.white),)),
           ),
         ),
         //backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -103,12 +103,12 @@ class _IngresoDeudasState extends State<IngresoDeudas> {
         ), */
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
           iconSize: 20.0,
           color: Colors.white,
           onPressed: () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => MyDeudas2(),
+              builder: (context) => const MyDeudas2(),
             ));
           },
         ),
@@ -116,7 +116,7 @@ class _IngresoDeudasState extends State<IngresoDeudas> {
       body: Form(
         key: _formKey,
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("images/fondo.png"),
             fit: BoxFit.cover,
@@ -140,10 +140,9 @@ class _IngresoDeudasState extends State<IngresoDeudas> {
                   hintText: 'Nombre de Deuda',
                 ),
               ),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               TextFormField(
                 validator: (value) {
-                  print(value);
                   if (!isNumeric(value)) {
                     return "Debe ingresar un número!";
                   }
@@ -154,16 +153,16 @@ class _IngresoDeudasState extends State<IngresoDeudas> {
                   hintText: 'N° Cuotas',
                 ),
               ),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               ElevatedButton(
                 onPressed: () => _selectDate(context),
                 child: const Text("Fecha Primer Pago"),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8.0,
               ),
               Text("${selectedDate.toLocal()}".split(' ')[0]),
-              SizedBox(
+              const SizedBox(
                 height: 24.0,
               ),
               Row(

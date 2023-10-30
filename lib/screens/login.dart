@@ -15,8 +15,8 @@ class _MyLoginState extends State<MyLogin> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final _user = TextEditingController();
   final _contrasena = TextEditingController();
-  bool _success = false;
-  String? _userEmail = "";
+  bool success = false;
+  String? userEmail = "";
 
   void _signInWithEmailAndPassword() async {
     try {
@@ -28,25 +28,23 @@ class _MyLoginState extends State<MyLogin> {
 
       if (user != null) {
         setState(() {
-          _success = true;
-          _userEmail = user.email;
+          success = true;
+          userEmail = user.email;
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
-              builder: (context) => MyDeudas2(),
+              builder: (context) => const MyDeudas2(),
             ),
           );
         });
       } else {
         setState(() {
-          print("Problemas ...");
-          _success = false;
+          success = false;
         });
       }
     } on FirebaseAuthException catch (error) {
       final ex = AuthException.code(error.code);
       // ignore: use_build_context_synchronously
       showModal(context, ex.mensaje);
-      print(error);
     }
   }
 
@@ -114,12 +112,12 @@ class _MyLoginState extends State<MyLogin> {
                 ),
                 child: const Text('INGRESAR'),
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
-                      builder: (context) => Registro(),
+                      builder: (context) => const Registro(),
                     ),
                   );
                 },

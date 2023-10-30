@@ -46,7 +46,7 @@ class _RegistroState extends State<Registro>
         _success = true;
         _userEmail = user.email!;
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => MyDeudas2(),
+          builder: (context) => const MyDeudas2(),
         ));
       });
     } else {
@@ -69,7 +69,7 @@ class _RegistroState extends State<Registro>
             height: 250,
             width: MediaQuery.of(context).size.width,
             color: Theme.of(context).colorScheme.inversePrimary, //Colors.red,
-            child: Center(
+            child: const Center(
                 child: Text(
               "DEUDAS QL",
               style: TextStyle(fontSize: 20, color: Colors.white),
@@ -78,12 +78,12 @@ class _RegistroState extends State<Registro>
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
           iconSize: 20.0,
           color: Colors.white,
           onPressed: () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => MyLogin(),
+              builder: (context) => const MyLogin(),
             ));
           },
         ),
@@ -91,7 +91,7 @@ class _RegistroState extends State<Registro>
       body: Form(
         key: _formKey,
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("images/fondo.png"),
               fit: BoxFit.cover,
@@ -114,7 +114,7 @@ class _RegistroState extends State<Registro>
                   hintText: 'Correo',
                 ),
               ),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               TextFormField(
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -128,14 +128,13 @@ class _RegistroState extends State<Registro>
                 ),
                 obscureText: true,
               ),
-              SizedBox(height: 24.0),
+              const SizedBox(height: 24.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        print(EmailValidator.validate(email.text));
                         setState(() {
                           _isLoading = true;
                         });
@@ -161,7 +160,7 @@ class _RegistroState extends State<Registro>
                     child: Text(_success == false
                         ? ''
                         : (_success
-                            ? 'Successfully registered ' + _userEmail
+                            ? 'Successfully registered $_userEmail'
                             : 'Registration failed')),
                   )
                 ],

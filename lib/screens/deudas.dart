@@ -17,7 +17,7 @@ class MyDeudas extends StatelessWidget {
           ),
           actions: <Widget>[
             IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.add,
                 color: Colors.white,
               ),
@@ -25,7 +25,7 @@ class MyDeudas extends StatelessWidget {
                 // do something
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
-                    builder: (context) => IngresoDeudas(),
+                    builder: (context) => const IngresoDeudas(),
                   ),
                 );
               },
@@ -74,7 +74,7 @@ class MyDeudas extends StatelessWidget {
 
                       // The end action pane is the one at the right or the bottom side.
                       endActionPane: ActionPane(
-                        motion: ScrollMotion(),
+                        motion: const ScrollMotion(),
                         children: [
                           SlidableAction(
                             // An action can be bigger than the others.
@@ -82,12 +82,12 @@ class MyDeudas extends StatelessWidget {
                             onPressed: (context) {
                               pagar(snapshot.data![index].id, snapshot.data![index].n_cuota);
                             },
-                            backgroundColor: Color(0xFF7BC043),
+                            backgroundColor: const Color(0xFF7BC043),
                             foregroundColor: Colors.white,
                             icon: Icons.archive,
                             label: 'Archive',
                           ),
-                          SlidableAction(
+                          const SlidableAction(
                             onPressed: doNothing,
                             backgroundColor: Color(0xFF0392CF),
                             foregroundColor: Colors.white,
@@ -99,7 +99,7 @@ class MyDeudas extends StatelessWidget {
 
                       // The child of the Slidable is what the user sees when the
                       // component is not dragged.
-                      child: ListTile(title: Text(snapshot.data![index].nombre_deuda + " / "+snapshot.data![index].n_cuota.toString())),
+                      child: ListTile(title: Text("${snapshot.data![index].nombre_deuda} / ${snapshot.data![index].n_cuota}")),
                     );
                   }
                   );
@@ -182,10 +182,6 @@ class MyDeudas extends StatelessWidget {
 
 void doNothing(BuildContext context) {}
 
-restar2(BuildContext context, String id) {
-  print(id);
-}
-
 void restarCuota(String idDeuda, int nCuotas) {
   pagar(idDeuda, nCuotas);
 }
@@ -194,22 +190,3 @@ void resta(BuildContext context) {
   
 }
 
-void prueba(BuildContext context, String prueba) {
-  print(prueba);
-}
-
-class _MyAppBar extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SliverAppBar(
-      title: Text('Deduas', style: Theme.of(context).textTheme.displayLarge),
-      floating: true,
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.shopping_cart),
-          onPressed: () => {},
-        ),
-      ],
-    );
-  }
-}
