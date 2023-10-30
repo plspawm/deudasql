@@ -5,7 +5,7 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini_m1
     integrations:
-      app_store_connect: MJB3S4RR5G
+      app_store_connect: Metaprime
     environment:
       ios_signing:
         distribution_type: ad_hoc # | ad_hoc | development | enterprise # app_store or: ad_hoc | development | enterprise
