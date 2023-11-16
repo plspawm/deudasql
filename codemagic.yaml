@@ -6,7 +6,7 @@ workflows:
       app_store_connect: Metaprime
     environment:
       ios_signing:
-        distribution_type: app_store
+        distribution_type: ad_hoc
         bundle_identifier: com.servicios4j.deudasql
       vars:
         APP_STORE_APPLE_ID: 6471142074
